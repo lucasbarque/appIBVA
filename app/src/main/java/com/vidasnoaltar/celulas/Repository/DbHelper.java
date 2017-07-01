@@ -328,7 +328,6 @@ public class DbHelper extends SQLiteOpenHelper {
         content.put("GES_CELULA_ID", grupoEvangelistico.getGes_celula_id());
         content.put("NOME", grupoEvangelistico.getNome());
         content.put("DATA", grupoEvangelistico.getData());
-//        content.put("DIAS", grupoEvangelistico.getDias());
 
         if (grupoEvangelistico.getId() < 0) {
             db.insert("TB_GES", null, content);

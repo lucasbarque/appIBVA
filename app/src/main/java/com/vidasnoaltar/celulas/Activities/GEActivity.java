@@ -98,7 +98,7 @@ public class GEActivity extends AppCompatActivity {
             imageview_lista_vazia = (ImageView) findViewById(R.id.imageview_lista_vazia);
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
-        new ListaGrupoEvangelisticoTask(GEActivity.this).execute();
+        new ListaGrupoEvangelisticoTask(GEActivity.this, celulaid).execute();
         super.onResume();
     }
 }
