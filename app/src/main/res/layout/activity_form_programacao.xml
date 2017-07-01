@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="estacio.br.com.procelula.Activities.FormAvisoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/th_add_programacao"
+        style="@style/Avisos"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/roteirosPrimary"
+        app:title="Cadastrar Nova Programação" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edittext_nome"
+                    style="@style/EditTextPadrao"
+                    android:hint="Nome da programação"
+                    android:inputType="text|textCapSentences" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/data_programacao"
+                    style="@style/EditTextPadrao"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Data da programação"
+                    android:inputType="date" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/horario_programacao"
+                    style="@style/EditTextPadrao"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Horário da programação"
+                    android:inputType="time" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edittext_endereco"
+                    style="@style/EditTextPadrao"
+                    android:hint="Local da programação"
+                    android:inputType="text|textCapSentences" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edittext_telefone"
+                    style="@style/EditTextPadrao"
+                    android:hint="Telefone para contato"
+                    android:inputType="phone" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edittext_valor"
+                    style="@style/EditTextPadrao"
+                    android:hint="Valor a ser gasto em R$"
+                    android:inputType="numberDecimal" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSalvar"
+                style="@style/ButtonBlue"
+                android:text="Salvar" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

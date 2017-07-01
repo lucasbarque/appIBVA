@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="estacio.br.com.procelula.Activities.FormAvisoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/th_add_aviso"
+        style="@style/Avisos"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/roteirosPrimary"
+        app:title="Cadastrar Novo Aviso" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_titulo"
+                style="@style/EditTextPadrao"
+                android:hint="Título"
+                android:inputType="text|textCapSentences" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_conteudo"
+                style="@style/EditTextPadrao"
+                android:hint="Conteúdo"
+                android:inputType="text|textCapSentences" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_salvar"
+            style="@style/ButtonBlue"
+            android:text="Salvar" />
+
+    </LinearLayout>
+</LinearLayout>
