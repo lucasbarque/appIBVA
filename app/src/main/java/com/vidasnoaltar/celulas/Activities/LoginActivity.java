@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (db.consulta("SELECT SENHA FROM TB_USUARIOS WHERE LOGIN = '" + edtLogin.getText().toString().trim() + "'", "SENHA").equals(edtSenha.getText().toString().trim())) {
                             Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                             Usuario usuario = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE LOGIN = '" + edtLogin.getText().toString().trim() + "'").get(0);
-                            db.atualizarLogin(usuario.getId(), usuario.getLogin(), usuario.getSenha(), usuario.getUsuarios_celula_id());
+                            db.atualizarLogin(usuario.getId(), usuario.getLogin(), usuario.getSenha(), usuario.getUsuarios_celula_id(), usuario.getId());
                             db.close();
                             startActivity(intent);
                             finish();

@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-
 import com.vidasnoaltar.celulas.Dados.Aviso;
 import com.vidasnoaltar.celulas.R;
 import com.vidasnoaltar.celulas.Repository.DbHelper;
@@ -21,7 +20,6 @@ import com.vidasnoaltar.celulas.Utils.TipoMsg;
 import com.vidasnoaltar.celulas.Utils.Utils;
 import com.vidasnoaltar.celulas.task.DeleteAvisoTask;
 import com.vidasnoaltar.celulas.task.ListaAvisoTask;
-
 import java.util.List;
 
 
@@ -57,6 +55,7 @@ public class AvisoActivity extends AppCompatActivity {
 
         lstAvisos = (ListView) findViewById(R.id.lstAvisos);
         imageview_lista_vazia = (ImageView) findViewById(R.id.imageview_lista_vazia);
+
     }
 
     @Override
@@ -97,6 +96,7 @@ public class AvisoActivity extends AppCompatActivity {
             });
         } catch (CursorIndexOutOfBoundsException e) {
             System.out.println("Tabela avisos vazia!");
+            lstAvisos.setAdapter(null); //Limpando Lista
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
         new ListaAvisoTask(AvisoActivity.this, celulaid).execute();
@@ -117,6 +117,8 @@ public class AvisoActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
 
 

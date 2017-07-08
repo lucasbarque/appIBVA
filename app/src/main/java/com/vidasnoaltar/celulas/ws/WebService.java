@@ -2,6 +2,8 @@ package com.vidasnoaltar.celulas.ws;
 
 import android.util.Log;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -52,7 +54,9 @@ public class WebService {
     public String save(Object objeto, String endPoint) {
         try {
             URL url = new URL(BASE_URL + endPoint);
-            return sendRequest(url, "POST", new ObjectMapper().writeValueAsString(objeto));
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+            return sendRequest(url, "POST", objectMapper.writeValueAsString(objeto));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

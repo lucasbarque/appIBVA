@@ -1,17 +1,26 @@
 package com.vidasnoaltar.celulas.Activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import com.vidasnoaltar.celulas.Dados.DadosNotification;
+import com.vidasnoaltar.celulas.GCM.RegistrationIntentService;
 import com.vidasnoaltar.celulas.R;
 import com.vidasnoaltar.celulas.Repository.DbHelper;
 import com.vidasnoaltar.celulas.Utils.TipoMsg;
 import com.vidasnoaltar.celulas.Utils.Utils;
+import java.io.Serializable;
 
 public class PrincipalActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +36,10 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
     private TextView txtGe;
     private TextView txtCelula;
     private TextView txtUsuario;
+
+    private BroadcastReceiver registrationBroadcastReceiver;
+    private static final String REGISTRATION_COMPLETE = "REGISTRATION_COMPLETE";
+    private static final String PUSH = "PUSH";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +73,21 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         txtCelula.setOnClickListener(this);
         txtUsuario.setOnClickListener(this);
 
+        Serializable serializable = getIntent().getExtras() != null ? getIntent().getExtras().getSerializable("notification") : null;
+        if (serializable != null) {
+            DadosNotification notification = (DadosNotification) serializable;
+            Utils.showMessageToast(PrincipalActivity.this, notification.toString());
+
+        }
+        configurarGCM();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(registrationBroadcastReceiver, new IntentFilter(REGISTRATION_COMPLETE));
+        LocalBroadcastManager.getInstance(this).registerReceiver(registrationBroadcastReceiver, new IntentFilter(PUSH));
     }
 
     @Override
@@ -94,5 +122,19 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
             });
 
         }
+    }
+
+
+    private void configurarGCM(){
+        registrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String token = intent.getStringExtra("token");
+                Utils.showMessageToast(PrincipalActivity.this, "Token: " + token);
+            }
+        };
+        Intent intent = new Intent(this, RegistrationIntentService.class);
+        intent.putExtra("key", "register");
+        startService(intent);
     }
 }

@@ -73,6 +73,7 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
                 }
                 db.close();
             } else {
+
                 System.out.println("O objeto acabou ficando vazio!");
             }
             return true;
@@ -90,7 +91,7 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
                 try {
                     alert.dismiss();
                 } catch (NullPointerException e) {
-                    System.out.println("Alert esta nulo");
+                    System.out.println("Alert está nulo");
                 }
             }
         });
@@ -105,6 +106,7 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
                     Date dataMes = new Date();
                     if (data.getMonth() != dataMes.getMonth()) {
                         usuarioList.remove(i);
+                        i = 0;
                     }
                 } catch (ParseException | NullPointerException e) {
                     System.out.println(e.getMessage());
@@ -122,7 +124,7 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
         }
 
         if (!statusOK) {
-            Toast.makeText(activity, "Você não esta conectado a internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Você não está conectado à internet", Toast.LENGTH_LONG).show();
         }
     }
 }

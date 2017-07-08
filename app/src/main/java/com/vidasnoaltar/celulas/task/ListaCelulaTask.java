@@ -54,7 +54,7 @@ public class ListaCelulaTask extends AsyncTask<String, Object, Boolean> {
                     alert = new ProgressDialog(activity);
                     alert.setCancelable(false);
                     alert.setTitle("Aguarde um momento");
-                    alert.setMessage("Estamos sincronizando os células");
+                    alert.setMessage("Estamos sincronizando os dados!");
                     alert.show();
                 }
             });
@@ -76,6 +76,8 @@ public class ListaCelulaTask extends AsyncTask<String, Object, Boolean> {
                 }
                 db.close();
             } else {
+                DbHelper db = new DbHelper(activity);
+                db.alterar("DELETE FROM TB_CELULAS");
                 System.out.println("O objeto acabou ficando vazio!");
             }
             return true;
@@ -93,7 +95,7 @@ public class ListaCelulaTask extends AsyncTask<String, Object, Boolean> {
                 try {
                     alert.dismiss();
                 } catch (NullPointerException e) {
-                    System.out.println("Alert esta nulo");
+                    System.out.println("Alert está nulo");
                 }
             }
         });
@@ -109,7 +111,7 @@ public class ListaCelulaTask extends AsyncTask<String, Object, Boolean> {
             semana.setText(celula.converteDiaJejum() + " - " + celula.getPeriodo());
             versiculo.setText("\"" + celula.getVersiculo() + "\"");
         } catch (CursorIndexOutOfBoundsException e) {
-            System.out.println("Sem celula para listar");
+            System.out.println("Sem célula para listar");
         }
         if (!statusOK) {
             Toast.makeText(activity, "Houve um erro de conexão", Toast.LENGTH_LONG).show();

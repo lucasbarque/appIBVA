@@ -70,6 +70,8 @@ public class ListaUsuarioTask extends AsyncTask<String, Object, Boolean> {
                 }
                 db.close();
             } else {
+                DbHelper db = new DbHelper(activity);
+                db.alterar("DELETE FROM TB_USUARIOS;");
                 System.out.println("O objeto acabou ficando vazio!");
             }
             return true;
@@ -100,6 +102,7 @@ public class ListaUsuarioTask extends AsyncTask<String, Object, Boolean> {
                 imageview_lista_vazia.setVisibility(View.GONE);
             }
         } catch (CursorIndexOutOfBoundsException e) {
+            lstUsuarios.setAdapter(null); //Limpando Lista
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
 

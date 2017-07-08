@@ -44,15 +44,14 @@ public class LoginTask extends AsyncTask<String, Object, Boolean> {
 
     @Override
     protected void onPreExecute() {
-        DbHelper dao = new DbHelper(activity);
-        if (dao.contagem("SELECT COUNT(*) FROM TB_USUARIOS") <= 0) {
+        if (db.contagem("SELECT COUNT(*) FROM TB_USUARIOS") <= 0) {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     alert = new ProgressDialog(activity);
                     alert.setCancelable(false);
                     alert.setTitle("Aguarde um momento");
-                    alert.setMessage("Estamos sincronizando suas informações");
+                    alert.setMessage("Estamos sincronizando os dados!");
                     alert.show();
                 }
             });
@@ -74,6 +73,8 @@ public class LoginTask extends AsyncTask<String, Object, Boolean> {
                 }
                 db.close();
             } else {
+                DbHelper db = new DbHelper(activity);
+                db.alterar("DELETE FROM TB_USUARIOS;");
                 System.out.println("O objeto acabou ficando vazio!");
                 return false;
             }
@@ -99,19 +100,7 @@ public class LoginTask extends AsyncTask<String, Object, Boolean> {
         try {
             int celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             List<Usuario> listaUsuario = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid + ";");
-            for (int i = 0; i < listaUsuario.size(); i++) {
-                SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
-                try {
-                    Date data = formatoEntrada.parse(listaUsuario.get(i).getNascimento());
-                    Date dataMes = new Date();
-                    if (data.getMonth() != dataMes.getMonth()) {
-                        listaUsuario.remove(i);
-                    }
-                } catch (ParseException | NullPointerException e) {
-                    System.out.println(e.getMessage());
-                    listaUsuario.remove(i);
-                }
-            }
+
             if (listaUsuario.size() > 0) {
                 ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listaUsuario);
                 listview_aniversariantes.setAdapter(adapter);

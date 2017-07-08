@@ -90,6 +90,7 @@ public class ProgramacaoActivity extends AppCompatActivity {
 
         } catch (CursorIndexOutOfBoundsException e) {
             System.out.println("Tabela avisos vazia!");
+            listview_programacoes.setAdapter(null); //Limpando Lista
             imageview_lista_vazia = (ImageView) findViewById(R.id.imageview_lista_vazia);
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }

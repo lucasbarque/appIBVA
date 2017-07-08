@@ -68,6 +68,7 @@ public class AniversariantesActivity extends AppCompatActivity {
                     Date dataMes = new Date();
                     if (data.getMonth() != dataMes.getMonth()) {
                         listaUsuario.remove(i);
+                        i = 0;
                     }
                 } catch (ParseException | NullPointerException e) {
                     System.out.println(e.getMessage());

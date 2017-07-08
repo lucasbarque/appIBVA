@@ -28,6 +28,7 @@ public class ListaAvisoTask extends AsyncTask<String, Object, Boolean> {
     private DbHelper db;
     private ListView lstAvisos;
     private ImageView imageview_lista_vazia;
+    private List<Aviso> avisos;
 
     public ListaAvisoTask(AvisoActivity activity, int celulaId) {
         this.activity = activity;
@@ -60,7 +61,7 @@ public class ListaAvisoTask extends AsyncTask<String, Object, Boolean> {
             WebService request = new WebService();
             String jsonResult = request.listByCelula("avisos", celulaId);
             JSONArray jsonArray = new JSONArray(jsonResult);
-            List<Aviso> avisos = new AvisoConverter().fromJson(jsonArray);
+            avisos = new AvisoConverter().fromJson(jsonArray);
             if (avisos != null && !avisos.isEmpty()) {
                 DbHelper db = new DbHelper(activity);
                 db.alterar("DELETE FROM TB_AVISOS;");
@@ -69,6 +70,8 @@ public class ListaAvisoTask extends AsyncTask<String, Object, Boolean> {
                 }
                 db.close();
             } else {
+                DbHelper db = new DbHelper(activity);
+                db.alterar("DELETE FROM TB_AVISOS;");
                 System.out.println("O objeto acabou ficando vazio!");
             }
             return true;
@@ -99,6 +102,7 @@ public class ListaAvisoTask extends AsyncTask<String, Object, Boolean> {
                 imageview_lista_vazia.setVisibility(View.GONE);
             }
         } catch (CursorIndexOutOfBoundsException e) {
+            lstAvisos.setAdapter(null); //Limpando Lista
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
 

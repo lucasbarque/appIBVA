@@ -79,7 +79,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "ID INTEGER PRIMARY KEY, " +
                 "LOGIN VARCHAR(100), " +
                 "SENHA VARCHAR(255)," +
-                "USUARIOS_CELULA_ID INTEGER)");
+                "USUARIOS_CELULA_ID INTEGER," +
+                "ID_USUARIO INTEGER)");
     }
 
     @Override
@@ -389,13 +390,14 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void atualizarLogin(int id, String login, String senha, int idCelula) {
+    public void atualizarLogin(int id, String login, String senha, int idCelula, int idUsuario) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues content = new ContentValues();
 
         content.put("ID", id);
         content.put("LOGIN", login);
         content.put("SENHA", senha);
+        content.put("ID_USUARIO", idUsuario);
         content.put("USUARIOS_CELULA_ID", idCelula);
 
         if (contagem("SELECT COUNT(*) FROM TB_LOGIN") > 0) {

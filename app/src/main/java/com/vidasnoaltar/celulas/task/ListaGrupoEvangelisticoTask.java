@@ -69,6 +69,8 @@ public class ListaGrupoEvangelisticoTask extends AsyncTask<String, Object, Boole
                 }
                 db.close();
             } else {
+                DbHelper db = new DbHelper(activity);
+                db.alterar("DELETE FROM TB_GES;");
                 System.out.println("O objeto acabou ficando vazio!");
             }
             return true;
@@ -99,11 +101,12 @@ public class ListaGrupoEvangelisticoTask extends AsyncTask<String, Object, Boole
                 imageview_lista_vazia.setVisibility(View.GONE);
             }
         } catch (CursorIndexOutOfBoundsException e) {
+            listview_ge.setAdapter(null); //Limpando Lista
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
 
         if (!statusOK) {
-            Toast.makeText(activity, "Você não esta conectado a internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Você não esta conectado à internet", Toast.LENGTH_LONG).show();
         }
     }
 }

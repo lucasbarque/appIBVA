@@ -83,6 +83,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
         } catch (CursorIndexOutOfBoundsException e) {
             System.out.println("Tabela usuarios vazia!");
+            lstUsuarios.setAdapter(null); //Limpando Lista
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
         new ListaUsuarioTask(UsuarioActivity.this, celulaid).execute();
