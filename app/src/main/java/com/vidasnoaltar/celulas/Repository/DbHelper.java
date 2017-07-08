@@ -307,7 +307,7 @@ public class DbHelper extends SQLiteOpenHelper {
         content.put("DIA", celula.getDia());
         content.put("HORARIO", celula.getHorario());
         content.put("LOCAL", celula.getLocal());
-        content.put("JEJUM", celula.getDia());
+        content.put("JEJUM", celula.getJejum());
         content.put("PERIODO", celula.getPeriodo());
         content.put("VERSICULO", celula.getVersiculo());
         if (celula.getId() < 0) {
