@@ -89,7 +89,7 @@ public class Utils {
         switch (tipoMsg){
             case INFO:
                 theme = R.style.AppTheme_Dark_Dialog_Info;
-                icone = R.drawable.info_toast;
+                icone = R.drawable.info;
                 break;
             case ERRO:
                 theme = R.style.AppTheme_Dark_Dialog_Error;

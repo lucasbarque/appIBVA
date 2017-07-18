@@ -115,7 +115,7 @@ public class LoginTask extends AsyncTask<String, Object, Boolean> {
             }
         }
         if (!statusOK) {
-            Toast.makeText(activity, "Você não esta conectado a internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Você não está conectado à internet", Toast.LENGTH_LONG).show();
         }
     }
 }

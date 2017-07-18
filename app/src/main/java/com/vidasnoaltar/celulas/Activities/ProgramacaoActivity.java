@@ -16,6 +16,8 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import com.vidasnoaltar.celulas.Adapters.ProgramacoesAdapter;
+import com.vidasnoaltar.celulas.Adapters.UsuariosAdapter;
 import com.vidasnoaltar.celulas.Dados.Programacao;
 import com.vidasnoaltar.celulas.R;
 import com.vidasnoaltar.celulas.Repository.DbHelper;
@@ -75,18 +77,21 @@ public class ProgramacaoActivity extends AppCompatActivity {
 
             celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             listaProgramacao = db.listaProgramacao("SELECT * FROM TB_PROGRAMACOES WHERE PROGRAMACOES_CELULA_ID = " + celulaid);
-            ArrayAdapter<Programacao> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, listaProgramacao);
+//            ArrayAdapter<Programacao> adapter = new ArrayAdapter<>(this,
+//                    android.R.layout.simple_list_item_1, listaProgramacao);
 
+            ProgramacoesAdapter adapter = new ProgramacoesAdapter(listaProgramacao, this);
             listview_programacoes.setAdapter(adapter);
-            listview_programacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //Vamos chamar a outra tela apenas quando implementarmos a imagem da programação
+
+            /*listview_programacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(ProgramacaoActivity.this, ProgramacaoSelecionadaActivity.class);
                     intent.putExtra("id_prog", listaProgramacao.get(position).getId());
                     startActivity(intent);
                 }
-            });
+            });*/
 
         } catch (CursorIndexOutOfBoundsException e) {
             System.out.println("Tabela avisos vazia!");

@@ -37,7 +37,7 @@ public class SaveCelulaTask extends AsyncTask<String, Object, Long> {
     @Override
     protected void onPostExecute(Long id) {
         if (id == 0) {
-            Toast.makeText(activity, "Houve um erro ao salvar o celula", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao salvar a célula!", Toast.LENGTH_LONG).show();
         } else {
             DbHelper dao = new DbHelper(activity);
             dao.atualizarCelula(celula);

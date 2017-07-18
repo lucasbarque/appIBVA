@@ -36,7 +36,7 @@ public class DeleteCelulaTask extends AsyncTask<String, Object, Boolean> {
     @Override
     protected void onPostExecute(Boolean statusOK) {
         if (!statusOK) {
-            Toast.makeText(activity, "Houve um erro ao remover o celula", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao remover o célula", Toast.LENGTH_LONG).show();
         }
         else {
             DbHelper dao = new DbHelper(activity);

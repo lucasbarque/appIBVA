@@ -29,7 +29,7 @@ public class SaveUsuarioTask extends AsyncTask<String, Object, Boolean> {
                 alert = new ProgressDialog(activity);
                 alert.setCancelable(false);
                 alert.setTitle("Aguarde um momento");
-                alert.setMessage("Salvando membro");
+                alert.setMessage("Salvando membro...");
                 alert.show();
             }
         });
@@ -52,7 +52,7 @@ public class SaveUsuarioTask extends AsyncTask<String, Object, Boolean> {
     @Override
     protected void onPostExecute(Boolean statusOK) {
         if (!statusOK) {
-            Toast.makeText(activity, "Houve um erro ao salvar o usuário", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao salvar o membro!", Toast.LENGTH_LONG).show();
         }
         alert.dismiss();
         activity.finish();

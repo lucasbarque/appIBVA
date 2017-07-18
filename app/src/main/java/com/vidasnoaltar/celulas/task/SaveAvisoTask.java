@@ -30,7 +30,7 @@ public class SaveAvisoTask extends AsyncTask<String, Object, Boolean> {
                 alert = new ProgressDialog(activity);
                 alert.setCancelable(false);
                 alert.setTitle("Aguarde um momento");
-                alert.setMessage("Salvando aviso");
+                alert.setMessage("Salvando aviso...");
                 alert.show();
             }
         });
@@ -41,8 +41,7 @@ public class SaveAvisoTask extends AsyncTask<String, Object, Boolean> {
     protected Boolean doInBackground(String... params) {
         try {
             WebService request = new WebService();
-            String jsonResult = request.save(aviso, "avisos");
-            JSONObject jsonObject = new JSONObject(jsonResult);
+            request.save(aviso, "avisos");
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -53,7 +52,7 @@ public class SaveAvisoTask extends AsyncTask<String, Object, Boolean> {
     @Override
     protected void onPostExecute(Boolean statusOK) {
         if (!statusOK) {
-            Toast.makeText(activity, "Houve um erro ao salvar o aviso", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao salvar o aviso!", Toast.LENGTH_LONG).show();
         }
         alert.dismiss();
         activity.finish();

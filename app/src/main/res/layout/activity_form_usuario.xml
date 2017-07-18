@@ -33,7 +33,7 @@
                     android:id="@+id/nome"
                     style="@style/EditTextPadrao"
                     android:inputType="textCapWords|textCapSentences"
-                    android:hint="Digite seu nome"
+                    android:hint="Digite o nome"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -44,7 +44,7 @@
                 <EditText
                     android:id="@+id/sobrenome"
                     android:layout_gravity="center_horizontal"
-                    android:hint="Digite seu sobrenome"
+                    android:hint="Digite o sobrenome"
                     android:inputType="textCapWords|textCapSentences"
                     style="@style/EditTextPadrao"/>
             </android.support.design.widget.TextInputLayout>
@@ -55,7 +55,7 @@
                 <EditText
                     android:id="@+id/email"
                     android:layout_gravity="center_horizontal"
-                    android:hint="Digite seu email"
+                    android:hint="Digite o email"
                     android:inputType="text|textEmailAddress"
                     style="@style/EditTextPadrao"/>
             </android.support.design.widget.TextInputLayout>
@@ -77,11 +77,12 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <EditText
                     android:id="@+id/login"
                     style="@style/EditTextPadrao"
-                    android:inputType="textCapWords|textCapSentences"
-                    android:hint="Digite seu login"/>
+                    android:hint="Digite o login"
+                    android:inputType="textCapWords|textCapSentences" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -92,7 +93,7 @@
                     style="@style/EditTextPadrao"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:hint="Digite sua senha"/>
+                    android:hint="Digite a senha"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -103,7 +104,7 @@
                     style="@style/EditTextPadrao"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:hint="Digite novamente senha"/>
+                    android:hint="Digite novamente a senha"/>
             </android.support.design.widget.TextInputLayout>
             <Button
                 android:id="@+id/salvar"

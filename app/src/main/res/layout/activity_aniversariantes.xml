@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:divider="#979797"
     android:orientation="vertical"
-    tools:context=".Activities.AniversariantesActivity">
+    tools:context="com.vidasnoaltar.celulas.Activities.AniversariantesActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/th_aniversariante"

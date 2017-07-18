@@ -15,7 +15,6 @@
     </style>
     <style name="Avisos">
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark</item>
-        <item name="navigationIcon">@drawable/abc_ic_ab_back_mtrl_am_alpha</item>
         <item name="android:background">?colorPrimary</item>
     </style>
 

@@ -40,7 +40,7 @@ public class DeleteUsuarioTask extends AsyncTask<String, Object, Boolean> {
                 alert = new ProgressDialog(activity);
                 alert.setCancelable(false);
                 alert.setTitle("Aguarde um momento");
-                alert.setMessage("Excluindo membro");
+                alert.setMessage("Excluíndo membro...");
                 alert.show();
             }
         });
@@ -73,7 +73,7 @@ public class DeleteUsuarioTask extends AsyncTask<String, Object, Boolean> {
 
                 lstUsuarios = (ListView) activity.findViewById(R.id.usuarioslist);
                 lstUsuarios.setAdapter(adapter);
-                Toast.makeText(activity, "Membro excluído com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Membro excluído com sucesso!", Toast.LENGTH_LONG).show();
 
             } catch (CursorIndexOutOfBoundsException e) {
                 imageview_lista_vazia = (ImageView) activity.findViewById(R.id.imageview_lista_vazia);

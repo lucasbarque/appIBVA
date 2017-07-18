@@ -40,7 +40,7 @@ public class DeleteGrupoEvangelisticoTask extends AsyncTask<String, Object, Bool
                 alert = new ProgressDialog(activity);
                 alert.setCancelable(false);
                 alert.setTitle("Aguarde um momento");
-                alert.setMessage("Excluindo Grupo Evangelistico");
+                alert.setMessage("Excluindo Grupo Evangelístico...");
                 alert.show();
             }
         });
@@ -63,7 +63,7 @@ public class DeleteGrupoEvangelisticoTask extends AsyncTask<String, Object, Bool
     protected void onPostExecute(Boolean statusOK) {
         alert.dismiss();
         if (!statusOK) {
-            Toast.makeText(activity, "Houve um erro ao remover o grupoevangelistico", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao remover o Grupo Evangelístico", Toast.LENGTH_LONG).show();
         } else {
             DbHelper db = new DbHelper(activity);
             try {
@@ -73,7 +73,7 @@ public class DeleteGrupoEvangelisticoTask extends AsyncTask<String, Object, Bool
 
                 listview_ge = (ListView) activity.findViewById(R.id.listview_ge);
                 listview_ge.setAdapter(adapter);
-                Toast.makeText(activity, "Grupo Evangelistico excluida com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Grupo Evangelístico excluído com sucesso!", Toast.LENGTH_LONG).show();
             } catch (CursorIndexOutOfBoundsException e) {
                 imageview_lista_vazia = (ImageView) activity.findViewById(R.id.imageview_lista_vazia);
                 imageview_lista_vazia.setVisibility(View.VISIBLE);

@@ -59,7 +59,7 @@ public class CelulaActivity extends AppCompatActivity {
             dia.setText(celula.converteDiaCelula());
             horario.setText(celula.getHorario());
             local.setText(celula.getLocal());
-            String jejum = celula.converteDiaCelula() != null && celula.getPeriodo() != null ? celula.converteDiaJejum() + " - " + celula.getPeriodo() : "Sem dia definido";
+            String jejum = (celula.converteDiaCelula() != null || celula.getPeriodo() != null ? celula.converteDiaJejum() + " - " + celula.getPeriodo() : "Sem dia definido");
             semana.setText(jejum);
             versiculo.setText("\"" + celula.getVersiculo() + "\"");
 

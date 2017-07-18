@@ -40,7 +40,7 @@ public class DeleteAvisoTask extends AsyncTask<String, Object, Boolean> {
                 alert = new ProgressDialog(activity);
                 alert.setCancelable(false);
                 alert.setTitle("Aguarde um momento");
-                alert.setMessage("Excluindo aviso");
+                alert.setMessage("Excluindo aviso...");
                 alert.show();
             }
         });
@@ -73,7 +73,7 @@ public class DeleteAvisoTask extends AsyncTask<String, Object, Boolean> {
 
                 lstAvisos = (ListView) activity.findViewById(R.id.lstAvisos);
                 lstAvisos.setAdapter(adapter);
-                Toast.makeText(activity, "Aviso excluido com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Aviso excluído com sucesso!", Toast.LENGTH_LONG).show();
 
             } catch (CursorIndexOutOfBoundsException e) {
                 imageview_lista_vazia = (ImageView) activity.findViewById(R.id.imageview_lista_vazia);

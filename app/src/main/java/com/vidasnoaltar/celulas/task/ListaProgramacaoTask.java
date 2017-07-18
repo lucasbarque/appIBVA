@@ -18,6 +18,7 @@ import java.util.List;
 
 import com.vidasnoaltar.celulas.Activities.ProgramacaoActivity;
 import com.vidasnoaltar.celulas.Activities.ProgramacaoSelecionadaActivity;
+import com.vidasnoaltar.celulas.Adapters.ProgramacoesAdapter;
 import com.vidasnoaltar.celulas.Dados.Programacao;
 import com.vidasnoaltar.celulas.R;
 import com.vidasnoaltar.celulas.Repository.DbHelper;
@@ -50,7 +51,7 @@ public class ListaProgramacaoTask extends AsyncTask<String, Object, Boolean> {
                     alert = new ProgressDialog(activity);
                     alert.setCancelable(false);
                     alert.setTitle("Aguarde um momento");
-                    alert.setMessage("Estamos sincronizando suas informações");
+                    alert.setMessage("Estamos buscando as programações...");
                     alert.show();
                 }
             });
@@ -98,16 +99,18 @@ public class ListaProgramacaoTask extends AsyncTask<String, Object, Boolean> {
         try {
             int celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             final List<Programacao> listaProgramacao = db.listaProgramacao("SELECT * FROM TB_PROGRAMACOES WHERE PROGRAMACOES_CELULA_ID = " + celulaid);
-            ArrayAdapter<Programacao> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listaProgramacao);
+//            ArrayAdapter<Programacao> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, listaProgramacao);
+            ProgramacoesAdapter adapter = new ProgramacoesAdapter(listaProgramacao, activity);
             listview_programacoes.setAdapter(adapter);
-            listview_programacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //Vamos chamar a outra tela apenas quando implementarmos a imagem da programação
+            /*listview_programacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(activity, ProgramacaoSelecionadaActivity.class);
                     intent.putExtra("id_prog", listaProgramacao.get(position).getId());
                     activity.startActivity(intent);
                 }
-            });
+            });*/
             if (listaProgramacao.size() > 0) {
                 imageview_lista_vazia.setVisibility(View.GONE);
             }
@@ -116,7 +119,7 @@ public class ListaProgramacaoTask extends AsyncTask<String, Object, Boolean> {
             imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
         if (!statusOK) {
-            Toast.makeText(activity, "Houve um erro ao obter a lista de clientes", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao obter as programações", Toast.LENGTH_LONG).show();
         }
     }
 }

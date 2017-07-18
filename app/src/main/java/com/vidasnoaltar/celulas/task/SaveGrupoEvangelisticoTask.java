@@ -29,7 +29,7 @@ public class SaveGrupoEvangelisticoTask extends AsyncTask<String, Object, Boolea
                 alert = new ProgressDialog(activity);
                 alert.setCancelable(false);
                 alert.setTitle("Aguarde um momento");
-                alert.setMessage("Salvando GE");
+                alert.setMessage("Salvando GE...");
                 alert.show();
             }
         });
@@ -51,7 +51,7 @@ public class SaveGrupoEvangelisticoTask extends AsyncTask<String, Object, Boolea
     @Override
     protected void onPostExecute(Boolean statusOK) {
         if (!statusOK) {
-            Toast.makeText(activity, "Houve um erro ao salvar o grupoevangelistico", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao salvar o GE!", Toast.LENGTH_LONG).show();
         }
         alert.dismiss();
         activity.finish();

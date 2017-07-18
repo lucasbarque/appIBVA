@@ -41,7 +41,6 @@ public class AniversariantesActivity extends AppCompatActivity {
         listview_aniversariantes = (ListView) findViewById(R.id.listview_aniversariantes);
 
         mToolbar = (Toolbar) findViewById(R.id.th_aniversariante);
-        mToolbar.setTitle("Aniversariantes");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -61,23 +60,23 @@ public class AniversariantesActivity extends AppCompatActivity {
         try {
             celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             List<Usuario> listaUsuario = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid + ";");
+            List<Usuario> aniversariantes = null;
             for (int i = 0; i < listaUsuario.size(); i++) {
                 SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
                 try {
                     Date data = formatoEntrada.parse(listaUsuario.get(i).getNascimento());
                     Date dataMes = new Date();
-                    if (data.getMonth() != dataMes.getMonth()) {
-                        listaUsuario.remove(i);
-                        i = 0;
+                    if (data.getMonth() == dataMes.getMonth()) {
+                        aniversariantes.add(listaUsuario.get(i));
                     }
                 } catch (ParseException | NullPointerException e) {
                     System.out.println(e.getMessage());
                     listaUsuario.remove(i);
                 }
             }
-            if (listaUsuario.size() > 0) {
+            if (aniversariantes != null) {
                 ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this,
-                        android.R.layout.simple_list_item_1, listaUsuario);
+                        android.R.layout.simple_list_item_1, aniversariantes);
 
                 listview_aniversariantes.setAdapter(adapter);
             } else {

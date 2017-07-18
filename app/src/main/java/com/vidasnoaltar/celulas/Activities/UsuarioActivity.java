@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import com.vidasnoaltar.celulas.Adapters.UsuariosAdapter;
 import com.vidasnoaltar.celulas.Dados.Usuario;
 import com.vidasnoaltar.celulas.R;
 import com.vidasnoaltar.celulas.Repository.DbHelper;
@@ -76,9 +77,9 @@ public class UsuarioActivity extends AppCompatActivity {
 
             celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             usuariosLst = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid);
-            ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, usuariosLst);
-
+//            ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this,
+//                    android.R.layout.simple_list_item_1, usuariosLst);
+            UsuariosAdapter adapter = new UsuariosAdapter(usuariosLst, this);
             lstUsuarios.setAdapter(adapter);
 
         } catch (CursorIndexOutOfBoundsException e) {

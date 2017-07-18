@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import java.util.List;
 
 import com.vidasnoaltar.celulas.Activities.UsuarioActivity;
+import com.vidasnoaltar.celulas.Adapters.UsuariosAdapter;
 import com.vidasnoaltar.celulas.Dados.Usuario;
 import com.vidasnoaltar.celulas.R;
 import com.vidasnoaltar.celulas.Repository.DbHelper;
@@ -96,7 +97,7 @@ public class ListaUsuarioTask extends AsyncTask<String, Object, Boolean> {
         try {
             int celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             List<Usuario> usuarioList = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid);
-            ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, usuarioList);
+            UsuariosAdapter adapter = new UsuariosAdapter(usuarioList, activity);
             lstUsuarios.setAdapter(adapter);
             if (usuarioList.size() > 0) {
                 imageview_lista_vazia.setVisibility(View.GONE);
@@ -107,7 +108,7 @@ public class ListaUsuarioTask extends AsyncTask<String, Object, Boolean> {
         }
 
         if (!statusOK) {
-            Toast.makeText(activity, "Você não esta conectado a internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Você não está conectado à internet", Toast.LENGTH_LONG).show();
         }
     }
 }

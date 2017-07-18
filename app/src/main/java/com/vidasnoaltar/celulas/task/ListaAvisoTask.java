@@ -48,7 +48,7 @@ public class ListaAvisoTask extends AsyncTask<String, Object, Boolean> {
                     alert = new ProgressDialog(activity);
                     alert.setCancelable(false);
                     alert.setTitle("Aguarde um momento");
-                    alert.setMessage("Estamos sincronizando os avisos");
+                    alert.setMessage("Estamos sincronizando os avisos...");
                     alert.show();
                 }
             });
@@ -107,7 +107,7 @@ public class ListaAvisoTask extends AsyncTask<String, Object, Boolean> {
         }
 
         if (!statusOK) {
-            Toast.makeText(activity, "Você não esta conectado a internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Você não está conectado à internet", Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -47,7 +47,7 @@ public class ListaGrupoEvangelisticoTask extends AsyncTask<String, Object, Boole
                     alert = new ProgressDialog(activity);
                     alert.setCancelable(false);
                     alert.setTitle("Aguarde um momento");
-                    alert.setMessage("Estamos sincronizando os ges");
+                    alert.setMessage("Estamos sincronizando os ges...");
                     alert.show();
                 }
             });
@@ -106,7 +106,7 @@ public class ListaGrupoEvangelisticoTask extends AsyncTask<String, Object, Boole
         }
 
         if (!statusOK) {
-            Toast.makeText(activity, "Você não esta conectado à internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Você não está conectado à internet", Toast.LENGTH_LONG).show();
         }
     }
 }

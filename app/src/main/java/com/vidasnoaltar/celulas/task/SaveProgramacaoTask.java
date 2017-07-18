@@ -29,7 +29,7 @@ public class SaveProgramacaoTask extends AsyncTask<String, Object, Boolean> {
                 alert = new ProgressDialog(activity);
                 alert.setCancelable(false);
                 alert.setTitle("Aguarde um momento");
-                alert.setMessage("Salvando programação");
+                alert.setMessage("Salvando programação...");
                 alert.show();
             }
         });
@@ -51,7 +51,7 @@ public class SaveProgramacaoTask extends AsyncTask<String, Object, Boolean> {
     @Override
     protected void onPostExecute(Boolean statusOK) {
         if (!statusOK) {
-            Toast.makeText(activity, "Houve um erro ao salvar o programacao", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Houve um erro ao salvar a programação!", Toast.LENGTH_LONG).show();
         }
         alert.dismiss();
         activity.finish();

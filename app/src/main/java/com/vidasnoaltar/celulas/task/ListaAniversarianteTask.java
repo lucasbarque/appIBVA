@@ -51,7 +51,7 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
                     alert = new ProgressDialog(activity);
                     alert.setCancelable(false);
                     alert.setTitle("Aguarde um momento");
-                    alert.setMessage("Estamos sincronizando os membros da sua célula!");
+                    alert.setMessage("Estamos buscando os aniversariantes do mês...");
                     alert.show();
                 }
             });
@@ -98,23 +98,22 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
         try {
             int celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             List<Usuario> usuarioList = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid);
-
+            List<Usuario> aniversariantes = null;
             for (int i = 0; i < usuarioList.size(); i++) {
                 SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
                 try {
                     Date data = formatoEntrada.parse(usuarioList.get(i).getNascimento());
                     Date dataMes = new Date();
-                    if (data.getMonth() != dataMes.getMonth()) {
-                        usuarioList.remove(i);
-                        i = 0;
+                    if (data.getMonth() == dataMes.getMonth()) {
+                        aniversariantes.add(usuarioList.get(i));
                     }
                 } catch (ParseException | NullPointerException e) {
                     System.out.println(e.getMessage());
                     usuarioList.remove(i);
                 }
             }
-            if (usuarioList.size() > 0) {
-                ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, usuarioList);
+            if (aniversariantes != null) {
+                ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, aniversariantes);
                 lstUsuarios.setAdapter(adapter);
                 imageview_lista_vazia.setVisibility(View.GONE);
             }
@@ -127,4 +126,6 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
             Toast.makeText(activity, "Você não está conectado à internet", Toast.LENGTH_LONG).show();
         }
     }
+
+
 }
