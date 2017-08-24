@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "226720078531",
+    "project_id": "vidas-no-altar"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226720078531:android:cfbc32aa5e7a2fca",
+        "android_client_info": {
+          "package_name": "com.vidasnoaltar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226720078531-877a5dc9a3h2jbrolk3u5u9ktu7c04g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2JHUc5uQ9V-rBM4yqUdSBXYeDrIvWOXo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226720078531:android:e47f1d6ee0ac519f",
+        "android_client_info": {
+          "package_name": "com.vidasnoaltar.celulas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226720078531-877a5dc9a3h2jbrolk3u5u9ktu7c04g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2JHUc5uQ9V-rBM4yqUdSBXYeDrIvWOXo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

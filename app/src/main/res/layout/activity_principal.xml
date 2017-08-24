@@ -63,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/aviso" />
 
             <TextView
@@ -91,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/programacao" />
 
             <TextView
@@ -129,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/aniversariante" />
 
             <TextView
@@ -158,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/ge" />
 
             <TextView
@@ -223,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:background="@drawable/usuario" />
+                android:background="@drawable/sair" />
 
             <TextView
                 android:id="@+id/txtUsuario"
