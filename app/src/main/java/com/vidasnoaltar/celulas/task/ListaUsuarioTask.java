@@ -28,7 +28,6 @@ public class ListaUsuarioTask extends AsyncTask<String, Object, Boolean> {
     private ProgressDialog alert;
     private DbHelper db;
     private ListView lstUsuarios;
-    private ImageView imageview_lista_vazia;
 
 
     public ListaUsuarioTask(UsuarioActivity activity, int celulaId) {
@@ -36,7 +35,6 @@ public class ListaUsuarioTask extends AsyncTask<String, Object, Boolean> {
         this.celulaId = celulaId;
         db = new DbHelper(activity);
         lstUsuarios = (ListView) activity.findViewById(R.id.usuarioslist);
-        imageview_lista_vazia = (ImageView) activity.findViewById(R.id.imageview_lista_vazia);
     }
 
 
@@ -99,12 +97,8 @@ public class ListaUsuarioTask extends AsyncTask<String, Object, Boolean> {
             List<Usuario> usuarioList = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid);
             UsuariosAdapter adapter = new UsuariosAdapter(usuarioList, activity);
             lstUsuarios.setAdapter(adapter);
-            if (usuarioList.size() > 0) {
-                imageview_lista_vazia.setVisibility(View.GONE);
-            }
         } catch (CursorIndexOutOfBoundsException e) {
             lstUsuarios.setAdapter(null); //Limpando Lista
-            imageview_lista_vazia.setVisibility(View.VISIBLE);
         }
 
         if (!statusOK) {

@@ -14,6 +14,7 @@ import org.json.JSONArray;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -98,7 +99,7 @@ public class ListaAniversarianteTask extends AsyncTask<String, Object, Boolean> 
         try {
             int celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             List<Usuario> usuarioList = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid);
-            List<Usuario> aniversariantes = null;
+            List<Usuario> aniversariantes = new ArrayList<>();
             for (int i = 0; i < usuarioList.size(); i++) {
                 SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
                 try {

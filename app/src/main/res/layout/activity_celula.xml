@@ -35,13 +35,6 @@
                 android:paddingBottom="150dp">
 
 
-                <ImageView
-                    android:id="@+id/imageview_lista_vazia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/celula_erro"
-                    android:visibility="gone" />
-
                 <TextView
                     android:id="@+id/nome"
                     android:layout_width="match_parent"

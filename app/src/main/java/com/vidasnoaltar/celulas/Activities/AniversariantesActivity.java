@@ -18,6 +18,7 @@ import com.vidasnoaltar.celulas.task.ListaAniversarianteTask;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class AniversariantesActivity extends AppCompatActivity {
         try {
             celulaid = Integer.parseInt(db.consulta("SELECT USUARIOS_CELULA_ID FROM TB_LOGIN", "USUARIOS_CELULA_ID"));
             List<Usuario> listaUsuario = db.listaUsuario("SELECT * FROM TB_USUARIOS WHERE USUARIOS_CELULA_ID = " + celulaid + ";");
-            List<Usuario> aniversariantes = null;
+            List<Usuario> aniversariantes = new ArrayList<>();
             for (int i = 0; i < listaUsuario.size(); i++) {
                 SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
                 try {
